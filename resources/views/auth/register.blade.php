@@ -8,14 +8,16 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                     {{-- {{Form::open(['action' => 'DashboardController@store', 'method' => 'POST'])}}  --}}
+                     {{-- {{Form::open(['action' => "{{ route('register') }}", 'method' => 'POST'])}}  --}}
+                    <form method="POST" action="{{ route('register') }}" id="form1">
                         @csrf
 
         <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>First Name:</label><span style="color: red">*</span>
-                        {{Form::text('first_name','', ['class' => 'form-control', 'placeholder' => 'First Name', ($errors->has('first_name')) ? 'autofocus' : ''])}}
+                        {{Form::text('first_name','', ['class' => 'form-control', 'placeholder' => 'First Name' ,array('required' => 'required') , ($errors->has('first_name')) ? 'autofocus' : ''])}}
                         @if ($errors->has('first_name'))
                                 <span class="help-block" style="color:red">
                                     {{ $errors->first('first_name') }}*
@@ -39,7 +41,7 @@
                 <div class="col-sm-3">
                         <div class="form-group">
                             <label>Last Name:</label><span style="color: red">*</span>
-                            {{Form::text('last_name', '', ['class' => 'form-control', 'placeholder' => 'Last Name', ($errors->has('last_name')) ? 'autofocus' : ''])}}
+                            {{Form::text('last_name', '', ['class' => 'form-control', 'placeholder' => 'Last Name',  array('required' => 'required'), ($errors->has('last_name')) ? 'autofocus' : ''])}}
                             @if ($errors->has('last_name'))
                                 <span class="help-block" style="color:red">
                                     {{ $errors->first('last_name') }}*
@@ -77,7 +79,7 @@
 
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>Secondary Contact No:</label><span style="color: red">*</span>
+                    <label>Secondary Contact No:</label>
                     {{Form::text('alternative_contact_no', '', ['class' => 'form-control', 'placeholder' => 'Alternative Contact No', ($errors->has('alternative_contact_no')) ? 'autofocus' : ''])}}
                     @if ($errors->has('alternative_contact_no'))
                                 <span class="help-block" style="color:red">
@@ -194,15 +196,44 @@
                                         {{ $errors->first('type_of_role') }}*
                                     </span>
                                 @endif
-                        </br>
+                        <br>
                     </div>             
                 </div>
         </div>
 
+        <div class="form-group row">
+            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+            <div class="col-md-6">
+                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+            <div class="col-md-6">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+            </div>
+        </div> 
+
+                
+                {{-- {{Form::submit('Submit', ['class' =>'btn btn-primary'])}}
+                {!! Form::close() !!} --}}
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Submit') }}
+                </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

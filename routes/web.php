@@ -20,4 +20,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/store', 'DashboardController@store');
+Route::get('/upload', 'DashboardController@upload');
 Route::get('/home', 'HomeController@index')->name('home');
