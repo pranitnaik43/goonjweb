@@ -17,7 +17,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>First Name:</label><span style="color: red">*</span>
-                        {{Form::text('first_name','', ['class' => 'form-control', 'placeholder' => 'First Name' ,array('required' => 'required') , ($errors->has('first_name')) ? 'autofocus' : ''])}}
+                        {{Form::text('first_name','', ['class' => 'form-control', 'placeholder' => 'First' , ($errors->has('first_name')) ? 'autofocus' : ''])}}
                         @if ($errors->has('first_name'))
                                 <span class="help-block" style="color:red">
                                     {{ $errors->first('first_name') }}*
@@ -41,7 +41,7 @@
                 <div class="col-sm-3">
                         <div class="form-group">
                             <label>Last Name:</label><span style="color: red">*</span>
-                            {{Form::text('last_name', '', ['class' => 'form-control', 'placeholder' => 'Last Name',  array('required' => 'required'), ($errors->has('last_name')) ? 'autofocus' : ''])}}
+                            {{Form::text('last_name', '', ['class' => 'form-control', 'placeholder' => 'Last Name', ($errors->has('last_name')) ? 'autofocus' : ''])}}
                             @if ($errors->has('last_name'))
                                 <span class="help-block" style="color:red">
                                     {{ $errors->first('last_name') }}*
