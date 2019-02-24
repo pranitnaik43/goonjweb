@@ -22,4 +22,67 @@ Auth::routes();
 
 Route::post('/store', 'DashboardController@store');
 Route::get('/upload', 'DashboardController@upload');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('home');
+
+
+
+//====================Storage====================
+
+Route::get('/selectCentre', 'StorageController@selectCentre');
+Route::get('/displayStorage', 'StorageController@displayStore');
+
+
+/*
+=>for storing json files in folder(storage/app/reliefCentre)
+1) go to config/filesystems.php 
+2) paste following code 
+
+'reliefCentre' => [
+            'driver' => 'local',
+            'root' => storage_path('app/reliefCentre'),
+        ],
+
+Storage::disk('local')->put('file.txt', 'Contents');
+$contents = Storage::disk('local')->get('file.jpg');
+
+refer link:https://laravel.com/docs/5.2/filesystem
+*/
+
+/*
+using React
+1)php artisan preset react
+2)npm install
+Refer link:https://blog.pusher.com/react-laravel-application/
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//====================/Storage====================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

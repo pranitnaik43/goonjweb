@@ -48,6 +48,15 @@ return [
             'root' => storage_path('app'),
         ],
 
+
+        //====================Storage====================
+        'reliefCentre' => [
+            'driver' => 'local',
+            'root' => storage_path('app/reliefCentre'),
+        ],
+        //====================Storage====================
+
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

@@ -11,6 +11,7 @@
                      {{-- {{Form::open(['action' => 'DashboardController@store', 'method' => 'POST'])}}  --}}
                      {{-- {{Form::open(['action' => "{{ route('register') }}", 'method' => 'POST'])}}  --}}
                     <form method="POST" action="{{ route('register') }}" id="form1">
+                        {{-- {{Form::open(['action' => 'RegisterController@create', 'method' => 'POST'])}} --}}
                         @csrf
 
         <div class="row">
@@ -56,10 +57,10 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <label>Email ID:</label><span style="color: red">*</span>
-                    {{Form::text('email_id', '', ['class' => 'form-control', 'placeholder' => 'Email ID', ($errors->has('email_id')) ? 'autofocus' : ''])}}
-                    @if ($errors->has('email_id'))
+                    {{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Email ID', ($errors->has('email')) ? 'autofocus' : ''])}}
+                    @if ($errors->has('email'))
                                 <span class="help-block" style="color:red">
-                                    {{ $errors->first('email_id') }}*
+                                    {{ $errors->first('email') }}*
                                 </span>
                             @endif
                 </div>             
@@ -190,7 +191,7 @@
                     <div class="form-group">
                         <label>Type Of Role:</label><span style="color: red">*</span>
                         <br>
-                        {{Form::select('type_of_role', array('1' => 'Admin Office', '2' => 'Storage Office Head', '3'=>'Onsite Team', '4' => 'Shipper'), '', ['class'=> 'form-control', 'placeholder'=> 'Type of Role'])}}
+                        {{Form::select('type_of_role', array('1' => 'Admin Office', '2' => 'Storage Office Head', '3'=>'Onsite Team', '4' => 'Shipper'), '', ['class'=> 'form-control'])}}
                         @if ($errors->has('type_of_role'))
                                     <span class="help-block" style="color:red">
                                         {{ $errors->first('type_of_role') }}*
@@ -219,7 +220,12 @@
             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
             <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                <input id="password-confirm" type="password" class="form-control{{ $errors->has('password-confirm') ? ' is-invalid' : '' }}" name="password_confirmation" required>
+                @if ($errors->has('password-confirm'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password-confirm') }}</strong>
+                    </span>
+                @endif
             </div>
         </div> 
 
@@ -227,9 +233,9 @@
                 {{-- {{Form::submit('Submit', ['class' =>'btn btn-primary'])}}
                 {!! Form::close() !!} --}}
                 <button type="submit" class="btn btn-primary">
-                    {{ __('Submit') }}
+                Submit
                 </button>
-                    </form>
+                </form>
                 </div>
             </div>
         </div>
