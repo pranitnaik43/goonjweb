@@ -29,11 +29,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $id=auth()->user()->email;
+        $id=auth()->user()->email;
         // return $id;
-        // $awaitedUser=AwaitedUser::where('email',$id);
-        // return $awaitedUser->first_name;
-        // return view('dashboard')->with('id',$awaitedUser);
+        $awaitedUser=AwaitedUser::where('email',$id)->get();
+        // return $awaitedUser;
+        return view('dashboard')->with('data',$awaitedUser);
         return view('dashboard');
     }
     // public function store(Request $request)

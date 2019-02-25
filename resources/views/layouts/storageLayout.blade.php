@@ -20,15 +20,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 {{-- =====================================React=========================================== --}}
-    <!-- Load React API -->
+    {{-- <!-- Load React API -->
 <script src= "https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <!-- Load React DOM-->
 <script src= "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 <!-- Load Babel Compiler -->
-<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script> --}}
 {{-- =====================================/React=========================================== --}}
 
-
+{{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 
 </head>
 <body>

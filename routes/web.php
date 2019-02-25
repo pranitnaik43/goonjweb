@@ -28,9 +28,10 @@ Route::get('/dashboard', 'DashboardController@index')->name('home');
 
 //====================Storage====================
 
-Route::get('/selectCentre', 'StorageController@selectCentre');
-Route::get('/displayStorage', 'StorageController@displayStore');
-
+Route::get('/displayStorage', 'StorageController@displayStorage');
+Route::get('/addStorage', 'StorageController@addStorage');
+Route::post('/add', 'StorageController@add');
+Route::get('/editStorage/{id}', 'StorageController@editStorage');
 
 /*
 =>for storing json files in folder(storage/app/reliefCentre)
@@ -53,6 +54,7 @@ using React
 1)php artisan preset react
 2)npm install
 Refer link:https://blog.pusher.com/react-laravel-application/
+https://medium.com/@chrislewisdev/react-without-npm-babel-or-webpack-1e9a6049714
 */
 
 
