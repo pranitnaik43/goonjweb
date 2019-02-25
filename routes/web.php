@@ -32,6 +32,7 @@ Route::get('/displayStorage', 'StorageController@displayStorage');
 Route::get('/addStorage', 'StorageController@addStorage');
 Route::post('/add', 'StorageController@add');
 Route::get('/editStorage/{id}', 'StorageController@editStorage');
+Route::post('/edit/{id}', 'StorageController@edit');
 
 /*
 =>for storing json files in folder(storage/app/reliefCentre)

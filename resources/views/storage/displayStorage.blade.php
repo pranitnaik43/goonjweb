@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex justify-content-center">
         <a href="/displayStorage" class="btn btn-primary" style="margin-left:50px">View Material</a>
-        <a href="/addStorage" class="btn btn-primary" style="margin-left:50px">Add Material</a>
+        <a href="/addStorage" class="btn btn-primary" style="margin-left:50px">Add/Edit Material</a>
         {{-- <a href="/editStorage" class="btn btn-primary" style="margin-left:50px">Edit Material</a> --}}
     </div>
     <div class="d-flex justify-content-center" style="border:black">

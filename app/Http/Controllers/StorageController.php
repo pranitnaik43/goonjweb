@@ -38,7 +38,7 @@ class StorageController extends Controller
         $data[0]['material'][$count]=$object;        //append last object to the array
         $json=json_encode($data,true);       //convert array to json
         Storage::disk('reliefCentre')->put('centre1.json', $json);      //store json(write original file)
-        return redirect('/addStorage')->with('data',$data);
+        return redirect('/addStorage')->with('data',$data)->with('success', 'Material added Successfully');
     }
 
     public function editStorage($id){
@@ -50,19 +50,30 @@ class StorageController extends Controller
                 $id_data=$objects[$i];
             }
         }
-        return $id_data;
+        // return $id_data['id'];
         return view('Storage.editStorage')->with('data',$data)->with('id_data', $id_data);
     }
-    public function edit($id){
+    public function edit($id, Request $request){
         $contents = Storage::disk('reliefCentre')->get('centre1.json');
         $data = json_decode($contents,true); 
         $objects = $data[0]['material'];
         for($i=0;$i<count($objects);$i++){
             if($objects[$i]['id']==$id){
                 $id_data=$objects[$i];
+                break;
             }
         }
-        return $id_data;
-        return view('Storage.editStorage')->with('data',$data)->with('id_data', $id_data);
+        $id_data['name']=$request->name;
+        $id_data['quantity']=$request->quantity;
+        $id_data['measure']=$request->measure;
+        $objects[$i]=$id_data;
+        $data[0]['material']=$objects;
+
+        $json=json_encode($data,true);       //convert array to json
+        Storage::disk('reliefCentre')->put('centre1.json', $json);      //store json(write original file)
+
+        // return $id_data;
+        return view('Storage.editStorage')->with('data',$data)->with('id_data', $id_data)->with('success', 'Material edited Successfully');
+        // return view('Storage.displayStorage');
     }
 }

@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session('status'))
+    <div class="alert alert-success" role="alert">
+        {{ session('status') }}
+    </div>
+    @endif
+
     <div class="d-flex justify-content-center">
             <a href="/displayStorage" class="btn btn-primary" style="margin-left:50px">View Material</a>
             <a href="/addStorage" class="btn btn-primary" style="margin-left:50px">Add Material</a>
