@@ -10,7 +10,10 @@
                 <div class="card-body">
                      {{-- {{Form::open(['action' => 'DashboardController@store', 'method' => 'POST'])}}  --}}
                      {{-- {{Form::open(['action' => "{{ route('register') }}", 'method' => 'POST'])}}  --}}
+                    {{-- <form method="POST" action="/registerSave" id="form1"> --}}
                     <form method="POST" action="{{ route('register') }}" id="form1">
+                         {{-- <form method="POST" action="MyLoginController@registerSave" id="form1"> --}}
+                        
                         {{-- {{Form::open(['action' => 'RegisterController@create', 'method' => 'POST'])}} --}}
                         @csrf
 
@@ -191,7 +194,7 @@
                     <div class="form-group">
                         <label>Type Of Role:</label><span style="color: red">*</span>
                         <br>
-                        {{Form::select('type_of_role', array('1' => 'Admin Office', '2' => 'Storage Office Head', '3'=>'Onsite Team', '4' => 'Shipper'), '', ['class'=> 'form-control'])}}
+                        {{Form::select('type_of_role', array('1' => 'User', '2' => 'Volunteer', '3'=>'Shipper'), '', ['class'=> 'form-control'])}}
                         @if ($errors->has('type_of_role'))
                                     <span class="help-block" style="color:red">
                                         {{ $errors->first('type_of_role') }}*

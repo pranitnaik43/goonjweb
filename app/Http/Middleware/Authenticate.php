@@ -1,9 +1,6 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-
 class Authenticate extends Middleware
 {
     /**
@@ -14,8 +11,14 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+        // return LoginController::overridenredirectTo($request);
+        // if (! $request->expectsJson()) {
+        // return (new LoginController)-> overridenredirectTo($request);
+        // }
+        // return overridenredirectTo($request);
         if (! $request->expectsJson()) {
-            return route('login');
+            return route('dashboard');
         }
     }
 }
+

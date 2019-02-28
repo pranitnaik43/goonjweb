@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.storageLayout')
 
 @section('content')
     @if (session('status'))
@@ -7,11 +7,6 @@
     </div>
     @endif
 
-    <div class="d-flex justify-content-center">
-            <a href="/displayStorage" class="btn btn-primary" style="margin-left:50px">View Material</a>
-            <a href="/addStorage" class="btn btn-primary" style="margin-left:50px">Add Material</a>
-            {{-- <a href="/editStorage" class="btn btn-primary" style="margin-left:50px">Edit Material</a> --}}
-    </div>
     <form action ="{{ action('StorageController@add') }}", method = 'POST' style="width:100%">
             @csrf
     {{-- <form action="{{ route('/add') }}", method = 'POST' style="width:100%"> --}}
@@ -26,11 +21,32 @@
             <th>Measure</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody  id="myTable">
             <tr>
-                <td><input type="text" id="name" name="name"></td>
-                <td><input type="text" id="quantity" name="quantity"></td>
-                <td><input type="text" id="measure" name="measure"></td>
+                <td>
+                <input type="text" id="name" name="name" autofocus><br>
+                @if ($errors->has('name'))
+                    <span class="help-block" style="color:red">
+                        {{ $errors->first('name') }}*
+                    </span>
+                @endif
+                </td>
+                <td>
+                <input type="text" id="quantity" name="quantity"><br>
+                @if ($errors->has('quantity'))
+                    <span class="help-block" style="color:red"> 
+                        {{ $errors->first('quantity') }}*
+                    </span>
+                @endif
+                </td>
+                <td>
+                <input type="text" id="measure" name="measure"><br>
+                @if ($errors->has('measure'))
+                    <span class="help-block" style="color:red">
+                        {{ $errors->first('measure') }}*
+                    </span>
+                @endif
+                </td>
                 <td><button class = 'btn btn-primary'>Add</button></td>
                     {{-- {{Form::submit('Submit', ['class' =>'btn btn-primary'])}} --}}
                 {{-- <button class="btn btn-primary" style="margin-left:50px">Add</button> --}}
@@ -50,4 +66,5 @@
     {{-- {!! Form::close() !!} --}}
     </div>
     </form>
+    
 @endsection

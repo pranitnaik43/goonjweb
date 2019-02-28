@@ -28,6 +28,13 @@ class StorageController extends Controller
     }
 
     public function add(Request $request){
+        $this->validate($request, [
+            'name'=>'required',
+            'quantity'=>'required|numeric',
+        ]);
+        if($request->measure == null){
+            $request->measure='-';
+        }
         $contents = Storage::disk('reliefCentre')->get('centre1.json');
         $data = json_decode($contents,true); 
         $objects = $data[0]['material'];
@@ -53,7 +60,12 @@ class StorageController extends Controller
         // return $id_data['id'];
         return view('Storage.editStorage')->with('data',$data)->with('id_data', $id_data);
     }
+    
     public function edit($id, Request $request){
+        $this->validate($request, [
+            'name'=>'required',
+            'quantity'=>'required|numeric',
+        ]);
         $contents = Storage::disk('reliefCentre')->get('centre1.json');
         $data = json_decode($contents,true); 
         $objects = $data[0]['material'];
@@ -76,4 +88,15 @@ class StorageController extends Controller
         return view('Storage.editStorage')->with('data',$data)->with('id_data', $id_data)->with('success', 'Material edited Successfully');
         // return view('Storage.displayStorage');
     }
+    public function uploadExcel(){
+        return view('uploadExcel');
+    }
+
+
+
+
+
+
+
+
 }

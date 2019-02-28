@@ -45,6 +45,17 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        // =================================
+        'users' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'awaited_user' => [
+                'driver' => 'session',
+                'provider' => 'awaited_user',
+            ],
+        //====================================
+   
     ],
 
     /*
@@ -67,8 +78,15 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\AwaitedUser::class,
+            'model' => App\Users::class,
         ],
+        //===================================================
+        'awaited_user' => [
+            'driver' => 'eloquent',
+            'model' => App\AwaitedUser::class,
+        ], 
+        //================================================
+
 
         // 'users' => [
         //     'driver' => 'database',

@@ -11,25 +11,27 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{-- =====================================<jQuery>=========================================== --}}
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{{-- =====================================</jQuery>=========================================== --}}
 
-{{-- =====================================React=========================================== --}}
-    {{-- <!-- Load React API -->
+{{-- =====================================<React>=========================================== --}}
+    <!-- Load React API -->
 <script src= "https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <!-- Load React DOM-->
 <script src= "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 <!-- Load Babel Compiler -->
-<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script> --}}
-{{-- =====================================/React=========================================== --}}
-
-{{-- <script src="{{ asset('js/app.js') }}"></script> --}}
-
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+{{-- =====================================</React>=========================================== --}}
 </head>
 <body>
         <div id="app">
@@ -45,7 +47,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
                             <ul class="navbar-nav mr-auto">
-        
+                                
                             </ul>
         
                             <!-- Right Side Of Navbar -->
@@ -83,10 +85,36 @@
                         </div>
                     </div>
                 </nav>
-        
+
+                {{-- ===========================<Add/Edit buttons and search bar>========================================= --}}
+                <div class="d-flex justify-content-center">
+                    <a href="/displayStorage" class="btn btn-primary" style="margin-left:50px">View Material</a>
+                    <a href="/addStorage" class="btn btn-primary" style="margin-left:50px">Add/Edit Material</a>
+                    <a href="/importExcel" class="btn btn-primary" style="margin-left:50px">Import from Excel</a>
+                </div>
+                <br>
+                <div class="d-flex justify-content-center" style="border:black">
+                <input class="form-control" id="myInput" type="text" placeholder="Search..." style="width:60%">        {{-- Search bar --}}
+                </div>
+                                {{-- ===========================<Script for search bar>========================= --}}
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#myInput").on("keyup", function() {
+                                        var value = $(this).val().toLowerCase();
+                                        $("#myTable tr").filter(function() {
+                                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                        });
+                                        });
+                                    });
+                                </script>
+                                {{-- ===========================<Script for search bar>========================= --}}
+                {{-- ===========================</Add/Edit buttons and search bar>==================================== --}}
+                
+                
                 <main class="py-4">
                     @yield('content')
                 </main>
+            
             </div>
         </body>
         </html>

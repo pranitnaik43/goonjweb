@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/upload';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -89,6 +89,7 @@ class RegisterController extends Controller
     {
         return AwaitedUser::create([
             'first_name' => $data['first_name'],
+            'middle_name' => $data['middle_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

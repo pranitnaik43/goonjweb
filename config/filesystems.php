@@ -49,12 +49,19 @@ return [
         ],
 
 
-        //====================Storage====================
+        //====================<Storage>====================
         'reliefCentre' => [
             'driver' => 'local',
             'root' => storage_path('app/reliefCentre'),
         ],
-        //====================Storage====================
+        //====================</Storage>====================
+        
+        //====================<Quotation>====================
+        'quotation' => [
+            'driver' => 'local',
+            'root' => storage_path('app/Quotations'),
+        ],
+        //====================</Quotation>====================
 
 
         'public' => [
