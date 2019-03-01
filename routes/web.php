@@ -55,9 +55,17 @@ Route::get('/admin/home', 'AdminOfficeController@home');
 Route::get('/admin/approve', 'AdminOfficeController@approve');
 Route::get('/admin/onsite', 'AdminOfficeController@onsite');
 Route::get('/admin/storagecentre', 'AdminOfficeController@storagecentre');
-Route::get('/admin/setUpReliefCentre', 'AdminOfficeController@setUpReliefCentre');
+Route::get('/admin/storagecentre/add', 'AdminOfficeController@addStorageCentre');
+Route::post('/admin/storagecentre/store', 'AdminOfficeController@storeStorageCentre');
+Route::get('/admin/ReliefCentre', 'AdminOfficeController@ReliefCentre');
+Route::get('/admin/ReliefCentre/add', 'AdminOfficeController@addReliefCentre');
+Route::post('/admin/ReliefCentre/store', 'AdminOfficeController@storeReliefCentre');
 Route::get('/admin/disaster', 'AdminOfficeController@disaster');
 Route::get('/admin/approve/{id}', 'AdminOfficeController@show');
+Route::get('/admin/storagecentre/{id}', 'AdminOfficeController@show2');
+Route::get('/admin/ReliefCentre/{id}', 'AdminOfficeController@show3');
+Route::get('/admin/disaster/add', 'AdminOfficeController@addDisaster');
+Route::post('/admin/disaster/store', 'AdminOfficeController@storeDisaster');
 Route::post('/accept', 'AdminOfficeController@accept');
 Route::post('/reject', 'AdminOfficeController@reject');
 

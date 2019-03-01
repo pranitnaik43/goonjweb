@@ -11,4 +11,6 @@ class Disaster extends Model
 
     //primary key
     public $primaryKey = 'disaster_id';
+
+    public $timestamps = false;
 }

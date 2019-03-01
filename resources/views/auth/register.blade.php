@@ -194,7 +194,7 @@
                     <div class="form-group">
                         <label>Type Of Role:</label><span style="color: red">*</span>
                         <br>
-                        {{Form::select('type_of_role', array('1' => 'User', '2' => 'Volunteer', '3'=>'Shipper'), '', ['class'=> 'form-control'])}}
+                        {{Form::select('type_of_role', array('3' => 'User', '4' => 'Volunteer', '5'=>'Shipper', '6' =>'Storage Centre'), '', ['class'=> 'form-control'])}}
                         @if ($errors->has('type_of_role'))
                                     <span class="help-block" style="color:red">
                                         {{ $errors->first('type_of_role') }}*

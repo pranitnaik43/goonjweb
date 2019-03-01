@@ -11,4 +11,6 @@ class ReliefCentre extends Model
 
     //primary key
     public $primaryKey = 'relief_centre_id';
+
+    public $timestamps = false;    
 }

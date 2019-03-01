@@ -17,29 +17,33 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/admin/home">Home</a></li>
-      <li><a href="/admin/disaster">Disasters</a></li>
       <li><a href="/admin/approve">Approve Unverified Users</a></li>
-      <li><a href="/admin/setUpReliefCentre">Set Up Relief Centre</a></li>
+      <li><a href="/admin/disaster">Disasters</a></li>
+      <li><a href="/admin/ReliefCentre">Set Up Relief Centre</a></li>
       <li><a href="/admin/onsite">Onsite Orders</a></li>
       <li><a href="/admin/storagecentre">Storage Centres</a></li>
     </ul>
   </div>
 </nav>
   
-<div class="container">
-  <h3>No Onsite Team Orders</h3>
-  {{-- <p>Admin Office</p> --}}
-</div>
+{{-- <div class="container">
+  <h3>Our ReliefCentres</h3>
+  <p>Admin Office</p>
+</div> --}}
+<h4><a href="/admin/ReliefCentre"><button type="button">Go Back</a></h4>
+
+<p>{{$relief_centre->relief_centre_id}}</p>
+<p>{{$relief_centre->poc}}</p>
+<p>{{$relief_centre->contact_no}}</p>
+<p>{{$relief_centre->alternative_contact_no}}</p>
+<p>{{$relief_centre->email_id}}</p>
+<p>{{$relief_centre->address_line_1}}</p>
+<p>{{$relief_centre->address_line_2}}</p>
+<p>{{$relief_centre->address_line_3}}</p>
+<p>{{$relief_centre->city}}</p>
+<p>{{$relief_centre->state}}</p>
+<p>{{$relief_centre->country}}</p>
+<p>{{$relief_centre->postal_code}}</p>
 
 </body>
 </html>
-
-
-<script>
-        $(".nav li").on("click", function() {
-          $(".nav li").removeClass("active");
-          $(this).addClass("active");
-        });
-    
-    </script>
-    

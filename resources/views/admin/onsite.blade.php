@@ -19,15 +19,15 @@
       <li class="active"><a href="/admin/home">Home</a></li>
       <li><a href="/admin/disaster">Disasters</a></li>
       <li><a href="/admin/approve">Approve Unverified Users</a></li>
-      <li><a href="/admin/setUpReliefCentre">Set Up Relief Centre</a></li>
-      <li><a href="/admin/onsite">Onsite Orders</a></li>
+      <li><a href="/admin/ReliefCentre">Set Up Relief Centre</a></li>
+      <li><a href="/admin/onsite">View Onsite Orders</a></li>
       <li><a href="/admin/storagecentre">Storage Centres</a></li>
     </ul>
   </div>
 </nav>
   
 <div class="container">
-  <h3>Disasters:-</h3>
+  <h3>No Onsite Team Orders</h3>
   {{-- <p>Admin Office</p> --}}
 </div>
 
