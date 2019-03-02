@@ -130,8 +130,15 @@ Route::get('ajax',function() {
 //====================</Ajax>====================
 
 
-
-
+//=========================<Quotations>======================
+// Controller => AdminOfficeController
+//layout => app
+//views => teamQuotations, viewQuotation, editQuotation
+Route::get('/teamQuotations', 'AdminOfficeController@teamQuotations');
+Route::get('/viewQuotation/{teamid}', 'AdminOfficeController@viewQuotation');
+Route::get('/editQuotation', 'AdminOfficeController@editQuotation');
+Route::post('/approveQuotation', 'AdminOfficeController@approveQuotation');
+//=========================</Quotations>======================
 
 
 

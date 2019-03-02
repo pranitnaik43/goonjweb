@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use DB;
 use App\AwaitedUser;
 use App\Users;
+use App\Quotation;
+use App\QuotationApproved;
 use App\StorageCentre;
 use App\ReliefCentre;
 use App\OnsiteTeam;
 use App\Disaster;
 use Illuminate\Http\Request;
+use Storage;
+
 
 class AdminOfficeController extends Controller
 {
@@ -124,17 +128,82 @@ class AdminOfficeController extends Controller
     }
 
      //=============================================Rey================================
-     public function viewQuotation(){
-        $contents = Storage::disk('quotation')->get('qutation1.json');
-        $data = json_decode($contents,true); 
-        $objects = $data[0]['material'];
-        
-        // return $id_data['id'];
-        
-        return view('Storage.editStorage')->with('data',$objects);
+     public function teamQuotations(){
+        $quotations = Quotation::join('disaster', 'quotation.disaster_id', '=', 'disaster.disaster_id')
+        ->select('quotation_id', 'team_id', 'disaster_type', 'city')
+        ->where('status',0)
+        // ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+        ->get();
+        // $quotations = Quotation::where('status',0);
+        // $disaster = disaster::all();
+        return view('admin.teamQuotations')->with('quotations',$quotations);
     }
 
-    
+    public function viewQuotation($quotation_id){
+        $quotation = Quotation::where('quotation_id',$quotation_id)->first();
+        $contents = Storage::disk('quotation')->get($quotation->quotation_details);
+        $data = json_decode($contents,true); 
+        $objects = $data[0]['material'];
+        // return $id_data['id'];
+        return view('admin.viewQuotation')->with('data',$objects)->with('quotation',$quotation);
+    }
+
+    public function approveQuotation(){
+        $quotations = Quotation::where('status',0)->get();
+        // return $quotations;
+        $approvedData = array(array('material' => null));
+        // return $approvedData;
+        $approvedObjects = $approvedData[0]['material'];
+        foreach($quotations as $quotation){
+            $contents = Storage::disk('quotation')->get($quotation->quotation_details);
+            $data = json_decode($contents,true); 
+            // return $data;
+            $objects = $data[0]['material'];
+            // return var_dump($objects);
+            // return $approvedData[0]['material'];
+            
+            // print_r($approvedObjects);
+            foreach($objects as $object){
+                // return $object;
+                $f=0;
+                if($approvedObjects!=null){
+                    for($i=0; $i<count($approvedObjects);$i++){
+                        if($object['name']==$approvedObjects[$i]['name']){
+                            $approvedObjects[$i]['quantity']=$approvedObjects[$i]['quantity']+$object['quantity'];
+                            // print_r($object['name'].$approvedObjects[$i]['name'].$approvedObjects[$i]['quantity']);
+                            $f=1;
+                            break;
+                        }
+                    }
+                    // foreach($approvedObjects as $approvedObject){
+                    //     if($object['name']==$approvedObject['name']){
+                    //         $approvedObject['quantity']=$approvedObject['quantity']+$object['quantity'];
+                    //         print_r($object['name'].$approvedObject['name'].$approvedObject['quantity']);
+                    //         $f=1;
+                    //         break;
+                    //     }
+                    // }
+                }
+                if($f==0){
+                    $approvedObjects[]=$object;
+                }
+                // print_r($approvedObjects);
+                // return $object;
+                // return $approvedObjects;
+            }
+            // print_r($approvedObjects);
+            // return $approvedObjects;
+            $quotation->status=1;
+            // $quotation->save();
+            }
+            // return $approvedObjects;
+            $approvedData[0]['material']=$approvedObjects;
+            $approvedDataObject=json_encode($approvedData[0]['material']);
+            Storage::disk('approvedQuotations')->put('ApprovedQuotation1.json', $approvedDataObject);
+            return view('admin.ApprovedQuotationView')->with('approvedQuotation',$approvedData[0]['material']);        
+    }
+
+
 
     //=============================================/Rey================================
 

@@ -61,6 +61,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/Quotations'),
         ],
+        'approvedQuotations' => [
+            'driver' => 'local',
+            'root' => storage_path('app/ApprovedQuotations'),
+        ],
         //====================</Quotation>====================
 
 
