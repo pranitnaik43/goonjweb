@@ -27,6 +27,10 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function maindashboard()
+    {
+        return view('layouts.maindashboard');
+    }
     public function index()
     {
         $id=auth()->user()->email;

@@ -38,6 +38,13 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 
+//====================<dashboard>====================
+Route::get('/maindashboard', 'DashboardController@maindashboard');
+
+//====================</dashboard>====================
+
+
+
 //====================<Register new user>====================
 Route::post('/store', 'DashboardController@store');
 Route::get('/upload', 'DashboardController@upload');
