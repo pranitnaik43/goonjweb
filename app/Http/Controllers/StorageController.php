@@ -55,7 +55,7 @@ class StorageController extends Controller
         for($i=0;$i<count($objects);$i++){
             if($objects[$i]['id']==$id){
                 $id_data=$objects[$i];
-            }
+            } 
         }
         // return $id_data['id'];
         return view('Storage.editStorage')->with('data',$data)->with('id_data', $id_data);

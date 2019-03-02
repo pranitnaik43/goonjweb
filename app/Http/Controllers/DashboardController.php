@@ -31,6 +31,11 @@ class DashboardController extends Controller
     {
         return view('layouts.maindashboard');
     }
+
+    public function home()
+    {
+        return view('layouts.home');
+    }
     public function index()
     {
         $id=auth()->user()->email;

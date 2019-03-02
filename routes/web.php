@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 //====================<dashboard>====================
 Route::get('/maindashboard', 'DashboardController@maindashboard');
-
+Route::get('/home', 'DashboardController@home');
 //====================</dashboard>====================
 
 
@@ -145,6 +145,21 @@ Route::get('/editQuotation', 'AdminOfficeController@editQuotation');
 Route::post('/approveQuotation', 'AdminOfficeController@approveQuotation');
 //=========================</Quotations>======================
 
+
+
+
+//===========================<Aneesh-Android>================================
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::get('/post','FilesController@StoreJson');
+Route::post('/post','FilesController@StoreJson');
+Route::get('/Authenticate','MobileAuthenticationController@Authenticate');
+Route::post('/Authenticate','MobileAuthenticationController@Authenticate');
+
+//===========================</Aneesh-Android>================================
 
 
 
