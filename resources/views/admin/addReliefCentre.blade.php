@@ -32,13 +32,14 @@
 
     <?php echo Form::open(['action'=> 'AdminOfficeController@storeReliefCentre', 'method'=>'POST']); ?>
 
-    <h1>Add Storage Centre</h1>
-    <div class="row">
+    <h1>Add Relief Centre</h1>
+    <br>
+    {{-- <div class="row">
         <div class="col-sm-3">
             <div class="form-group">
-                <label>Relief Centre ID:</label><span style="color: red">*</span> {{--Label and red star --}}
-                {{Form::text('relief_centre_id','', ['class' => 'form-control', 'placeholder' => 'Relief Centre ID', ($errors->has('relief_centre_id')) ? 'autofocus' : ''])}}     {{--To redirect to the error field --}}
-                @if ($errors->has('relief_centre_id'))                        {{--error validation below the field--}}
+                <label>Relief Centre ID:</label><span style="color: red">*</span> 
+                {{Form::text('relief_centre_id','', ['class' => 'form-control', 'placeholder' => 'Relief Centre ID', ($errors->has('relief_centre_id')) ? 'autofocus' : ''])}}     
+                @if ($errors->has('relief_centre_id'))                        
                             <span class="help-block" style="color:red">
                                 {{ $errors->first('relief_centre_id') }}*
                             </span>
@@ -46,7 +47,7 @@
             </div>             
         </div>
     </div>
-    <hr>
+    <hr> --}}
 
     <div class="row">
             <div class="col-sm-3">

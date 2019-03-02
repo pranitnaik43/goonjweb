@@ -32,21 +32,8 @@
 
     <?php echo Form::open(['action'=> 'AdminOfficeController@storeonsiteTeam', 'method'=>'POST']); ?>
 
-    <h1>Add Storage Centre</h1>
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="form-group">
-                <label>Team ID:</label><span style="color: red">*</span> {{--Label and red star --}}
-                {{Form::text('team_id','', ['class' => 'form-control', 'placeholder' => 'Onsite Team ID', ($errors->has('team_id')) ? 'autofocus' : ''])}}     {{--To redirect to the error field --}}
-                @if ($errors->has('team_id'))                        {{--error validation below the field--}}
-                            <span class="help-block" style="color:red">
-                                {{ $errors->first('team_id') }}*
-                            </span>
-                        @endif
-            </div>             
-        </div>
-    </div>
-    <hr>
+    <h1>Create Onsite Team</h1>
+    <br>
 
     <div class="row">
             <div class="col-sm-3">

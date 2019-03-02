@@ -103,18 +103,20 @@ class AdminOfficeController extends Controller
     {
         $this->validate($request, [
             
-            'end_date'=>'required|date_format:Y-m-d|after_or_equal:start_date',
+            'end_date'=>'nullable|date_format:Y-m-d|after_or_equal:start_date',
             'start_date'=>'required|date_format:Y-m-d|after_or_equal:team_establishment_date',
             'team_establishment_date'=>'required|date_format:Y-m-d',
             'team_members' => 'required',
             'team_size' => 'required|numeric',
-            'disaster_id' => 'required|numeric|exists:disaster,disaster_id',
-            'team_id' => 'required|numeric|unique:onsite_team',                        
+            'disaster_id' => 'required|numeric|exists:disaster,disaster_id',                        
         ]);
+        
+        
+
 
         $onsite_team = new OnsiteTeam;
-
-        $onsite_team->team_id = $request->input('team_id');
+        $num_str = sprintf("%06d", mt_rand(1, 999999));
+        $onsite_team->team_id = 'O'.$num_str;
         $onsite_team->disaster_id = $request->input('disaster_id');
         $onsite_team->team_size = $request->input('team_size');
         $onsite_team->team_members = $request->input('team_members');
@@ -226,19 +228,18 @@ class AdminOfficeController extends Controller
             'country'=>'required|alpha',
             'state'=>'required|alpha',
             'city'=>'required|alpha',
-            'address_line_3'=>'required',
-            'address_line_2'=>'required',
+            'address_line_3'=>'nullable',
+            'address_line_2'=>'nullable',
             'address_line_1'=>'required',
             'email_id'=>'required|email|unique:storage_centre,email_id',
-            'alternative_contact_no' => 'required|numeric|digits:10|unique:storage_centre,alternative_contact_no',
+            'alternative_contact_no' => 'nullable|numeric|digits:10|unique:storage_centre,alternative_contact_no',
             'contact_no' => 'required|numeric|digits:10|unique:storage_centre,contact_no',
-            'poc' => 'required|alpha',
-            'storage_centre_id' => 'required|numeric|unique:storage_centre',                        
+            'poc' => 'required',                        
         ]);
 
         $storage_centre = new StorageCentre;
-
-        $storage_centre->storage_centre_id = $request->input('storage_centre_id');
+        $num_str = sprintf("%06d", mt_rand(1, 999999));
+        $storage_centre->storage_centre_id = 'S'.$num_str;
         $storage_centre->poc = $request->input('poc');
         $storage_centre->contact_no = $request->input('contact_no');
         $storage_centre->alternative_contact_no = $request->input('alternative_contact_no');
@@ -275,19 +276,18 @@ class AdminOfficeController extends Controller
             'country'=>'required|alpha',
             'state'=>'required|alpha',
             'city'=>'required|alpha',
-            'address_line_3'=>'required',
-            'address_line_2'=>'required',
+            'address_line_3'=>'nullable',
+            'address_line_2'=>'nullable',
             'address_line_1'=>'required',
             'email_id'=>'required|email|unique:relief_centre,email_id',
-            'alternative_contact_no' => 'required|numeric|digits:10|unique:relief_centre,alternative_contact_no',
+            'alternative_contact_no' => 'nullable|numeric|digits:10|unique:relief_centre,alternative_contact_no',
             'contact_no' => 'required|numeric|digits:10|unique:relief_centre,contact_no',
-            'poc' => 'required|alpha',
-            'relief_centre_id' => 'required|numeric|unique:relief_centre',                        
+            'poc' => 'required',                        
         ]);
 
         $relief_centre = new ReliefCentre;
-
-        $relief_centre->relief_centre_id = $request->input('relief_centre_id');
+        $num_str = sprintf("%06d", mt_rand(1, 999999));
+        $relief_centre->relief_centre_id = 'R'.$num_str;
         $relief_centre->poc = $request->input('poc');
         $relief_centre->contact_no = $request->input('contact_no');
         $relief_centre->alternative_contact_no = $request->input('alternative_contact_no');
@@ -335,13 +335,13 @@ class AdminOfficeController extends Controller
             'country'=>'required|alpha',
             'state'=>'required|alpha',
             'city' => 'required|alpha',
-            'disaster_type' => 'required|alpha',
-            'disaster_id' => 'required|numeric|unique:disaster',                        
+            'disaster_type' => 'required|alpha',                        
         ]);
 
         $disaster = new Disaster;
 
-        $disaster->disaster_id = $request->input('disaster_id');
+        $num_str = sprintf("%06d", mt_rand(1, 999999));
+        $disaster->disaster_id = 'D'.$num_str;
         $disaster->disaster_type = $request->input('disaster_type');
         $disaster->city = $request->input('city');
         $disaster->state = $request->input('state');
