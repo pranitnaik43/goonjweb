@@ -80,8 +80,6 @@ Route::post('/accept', 'AdminOfficeController@accept');
 Route::post('/reject', 'AdminOfficeController@reject');
 
 
-Route::get('/viewQuotation', 'AdminOfficeController@viewQuotation');
-
 
 //======================</Admin Office>=================
 

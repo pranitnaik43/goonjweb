@@ -3,7 +3,7 @@
     @media(min-width:768px) {
         body {
             margin-top: 50px;
-            color: rgb(255,255,255);;
+            color: rgb(255,255,255);
         }
         /*html, body, #wrapper, #page-wrapper {height: 100%; overflow: hidden;}*/
     }
@@ -29,7 +29,7 @@
         }
     }
     .navbar-fixed-top{
-        background-color:#ADD8E6;
+        background-color:#333945;
     }
     /* Top Navigation */
     

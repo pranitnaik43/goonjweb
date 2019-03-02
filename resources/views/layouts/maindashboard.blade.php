@@ -49,30 +49,42 @@
         </ul>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div >
-            <ul class="nav navbar-nav side-nav">
-                <li>
-                    <a href="#" data-toggle="collapse" ><i class="fa fa-fw fa-search"></i> Verify User</i></a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>Approve Quotation</i></a>
-                    
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-user-plus"></i> Request from Onsite team </a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-paper-plane-o"></i> Disaster List</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa fa-question-circle"></i> Select Onsite team </a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-user-plus"></i> User Details</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-envelope"></i> Onsite team chat</a>
-                </li>
-            </ul>
+                <ul class="nav navbar-nav side-nav">
+                        <li>
+                            <a href="#" data-toggle="collapse" ><i class="fa fa-fw fa-search"></i> Verify User</i></a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>Approve Quotation</i></a>
+                            
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user-plus"></i> Request from Onsite team </a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-paper-plane-o"></i> Disasters</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa fa-question-circle"></i> Verify Users </a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user-plus"></i> Set Up Relief Centre</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user-plus"></i>Create Onsite Team</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user-plus"></i> View Onsite Orders</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user-plus"></i> Storage Centres</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user-plus"></i> User Details</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Onsite team chat</a>
+                        </li>
+                    </ul>
         </div>
         <!-- /.navbar-collapse -->
     </nav>
