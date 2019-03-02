@@ -7,6 +7,7 @@ use App\AwaitedUser;
 use App\Users;
 use App\StorageCentre;
 use App\ReliefCentre;
+use App\OnsiteTeam;
 use App\Disaster;
 use Illuminate\Http\Request;
 
@@ -81,6 +82,45 @@ class AdminOfficeController extends Controller
     public function onsite()
     {
         return view('admin.onsite');
+    }
+
+    public function onsiteTeam()
+    {
+        $onsite_team = DB::table('onsite_team')->paginate(10);
+        return view('admin.onsiteTeam')->with('onsite_team', $onsite_team);   
+    }
+
+    public function addonsiteTeam()
+    {
+        return view('admin.addonsiteTeam');
+    }
+
+    public function storeonsiteTeam(Request $request)
+    {
+        $this->validate($request, [
+            
+            'end_date'=>'required|date_format:Y-m-d|after_or_equal:start_date',
+            'start_date'=>'required|date_format:Y-m-d|after_or_equal:team_establishment_date',
+            'team_establishment_date'=>'required|date_format:Y-m-d',
+            'team_members' => 'required',
+            'team_size' => 'required|numeric',
+            'disaster_id' => 'required|numeric|exists:disaster,disaster_id',
+            'team_id' => 'required|numeric|unique:onsite_team',                        
+        ]);
+
+        $onsite_team = new OnsiteTeam;
+
+        $onsite_team->team_id = $request->input('team_id');
+        $onsite_team->disaster_id = $request->input('disaster_id');
+        $onsite_team->team_size = $request->input('team_size');
+        $onsite_team->team_members = $request->input('team_members');
+        $onsite_team->team_establishment_date = $request->input('team_establishment_date');
+        $onsite_team->start_date = $request->input('start_date');
+        $onsite_team->end_date = $request->input('end_date');
+
+        $onsite_team->save();
+        return redirect('/admin/onsiteTeam')->with('success', 'Onsite Team Created');
+
     }
 
      //=============================================Rey================================

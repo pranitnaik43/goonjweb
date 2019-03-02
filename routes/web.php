@@ -54,6 +54,9 @@ Route::get('redirect', 'RedirectController@index');
 Route::get('/admin/home', 'AdminOfficeController@home');
 Route::get('/admin/approve', 'AdminOfficeController@approve');
 Route::get('/admin/onsite', 'AdminOfficeController@onsite');
+Route::get('/admin/onsiteTeam', 'AdminOfficeController@onsiteTeam');
+Route::get('/admin/onsiteTeam/add', 'AdminOfficeController@addonsiteTeam');
+Route::post('/admin/onsiteTeam/store', 'AdminOfficeController@storeonsiteTeam');
 Route::get('/admin/storagecentre', 'AdminOfficeController@storagecentre');
 Route::get('/admin/storagecentre/add', 'AdminOfficeController@addStorageCentre');
 Route::post('/admin/storagecentre/store', 'AdminOfficeController@storeStorageCentre');
@@ -68,6 +71,7 @@ Route::get('/admin/disaster/add', 'AdminOfficeController@addDisaster');
 Route::post('/admin/disaster/store', 'AdminOfficeController@storeDisaster');
 Route::post('/accept', 'AdminOfficeController@accept');
 Route::post('/reject', 'AdminOfficeController@reject');
+
 
 Route::get('/viewQuotation', 'AdminOfficeController@viewQuotation');
 

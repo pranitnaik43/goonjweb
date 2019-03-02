@@ -11,4 +11,6 @@ class OnsiteTeam extends Model
 
     //primary key
     public $primaryKey = 'team_id';
+
+    public $timestamps = false;
 }

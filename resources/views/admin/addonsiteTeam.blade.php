@@ -28,19 +28,19 @@
 </nav>
   
 <div class="container">
-        <h4><a href="/admin/disaster"><button type="button">Go Back</a></h4>
+        <h4><a href="/admin/onsiteTeam"><button type="button">Go Back</a></h4>
 
-    <?php echo Form::open(['action'=> 'AdminOfficeController@storeDisaster', 'method'=>'POST']); ?>
+    <?php echo Form::open(['action'=> 'AdminOfficeController@storeonsiteTeam', 'method'=>'POST']); ?>
 
-    <h1>Add Disaster</h1>
+    <h1>Add Storage Centre</h1>
     <div class="row">
         <div class="col-sm-3">
             <div class="form-group">
-                <label>Disaster ID:</label><span style="color: red">*</span> {{--Label and red star --}}
-                {{Form::text('disaster_id','', ['class' => 'form-control', 'placeholder' => 'Disaster ID', ($errors->has('disaster_id')) ? 'autofocus' : ''])}}     {{--To redirect to the error field --}}
-                @if ($errors->has('disaster_id'))                        {{--error validation below the field--}}
+                <label>Team ID:</label><span style="color: red">*</span> {{--Label and red star --}}
+                {{Form::text('team_id','', ['class' => 'form-control', 'placeholder' => 'Onsite Team ID', ($errors->has('team_id')) ? 'autofocus' : ''])}}     {{--To redirect to the error field --}}
+                @if ($errors->has('team_id'))                        {{--error validation below the field--}}
                             <span class="help-block" style="color:red">
-                                {{ $errors->first('disaster_id') }}*
+                                {{ $errors->first('team_id') }}*
                             </span>
                         @endif
             </div>             
@@ -51,11 +51,11 @@
     <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Disaster Type:</label><span style="color: red">*</span>
-                    {{Form::text('disaster_type','', ['class' => 'form-control', 'placeholder' => 'Disaster Type', ($errors->has('disaster_type')) ? 'autofocus' : ''])}}
-                    @if ($errors->has('disaster_type'))
+                    <label>Disaster ID:</label><span style="color: red">*</span>
+                    {{Form::text('disaster_id','', ['class' => 'form-control', 'placeholder' => 'Disaster ID', ($errors->has('disaster_id')) ? 'autofocus' : ''])}}
+                    @if ($errors->has('disaster_id'))
                             <span class="help-block" style="color:red">
-                                {{ $errors->first('disaster_type') }}*
+                                {{ $errors->first('disaster_id') }}*
                             </span>
                         @endif
                 </div>             
@@ -63,11 +63,11 @@
 
             <div class="col-sm-3">
                     <div class="form-group">
-                        <label>City:</label>
-                        {{Form::text('city', '', ['class' => 'form-control', 'placeholder' => 'City', ($errors->has('city')) ? 'autofocus' : ''])}}
-                        @if ($errors->has('city'))
+                        <label>Team Size:</label>
+                        {{Form::text('team_size', '', ['class' => 'form-control', 'placeholder' => 'Team Size', ($errors->has('team_size')) ? 'autofocus' : ''])}}
+                        @if ($errors->has('team_size'))
                             <span class="help-block" style="color:red">
-                                {{ $errors->first('city') }}*
+                                {{ $errors->first('team_size') }}*
                             </span>
                         @endif
                     </div>             
@@ -75,11 +75,11 @@
 
             <div class="col-sm-3">
                     <div class="form-group">
-                        <label>State:</label><span style="color: red">*</span>
-                        {{Form::text('state', '', ['class' => 'form-control', 'placeholder' => 'State', ($errors->has('state')) ? 'autofocus' : ''])}}
-                        @if ($errors->has('state'))
+                        <label>Team Members:</label><span style="color: red">*</span>
+                        {{Form::text('team_members', '', ['class' => 'form-control', 'placeholder' => 'Team Members', ($errors->has('team_members')) ? 'autofocus' : ''])}}
+                        @if ($errors->has('team_members'))
                             <span class="help-block" style="color:red">
-                                {{ $errors->first('state') }}*
+                                {{ $errors->first('team_members') }}*
                             </span>
                         @endif
                     </div>             
@@ -87,11 +87,11 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Country:</label><span style="color: red">*</span>
-                    {{Form::text('country', '', ['class' => 'form-control', 'placeholder' => 'Country', ($errors->has('country')) ? 'autofocus' : ''])}}
-                    @if ($errors->has('country'))
+                    <label>Team Establishment Date:</label><span style="color: red">*</span>
+                    {{Form::date('team_establishment_date', '', ['class' => 'form-control', ($errors->has('team_establishment_date')) ? 'autofocus' : ''])}}
+                    @if ($errors->has('team_establishment_date'))
                         <span class="help-block" style="color:red">
-                            {{ $errors->first('country') }}*
+                            {{ $errors->first('team_establishment_date') }}*
                         </span>
                     @endif
                 </div>             
@@ -101,16 +101,31 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="form-group">
-                <label>Disaster description:</label>
-                {{Form::textarea('description', '', ['size'=>'70x2', 'class' => 'form-control', 'placeholder' => 'Description', ($errors->has('description')) ? 'autofocus' : ''])}}
-                @if ($errors->has('description'))
+                <label>Start Date:</label>
+                {{Form::date('start_date', '', ['class' => 'form-control', ($errors->has('start_date')) ? 'autofocus' : ''])}}
+                @if ($errors->has('start_date'))
                             <span class="help-block" style="color:red">
-                                {{ $errors->first('description') }}*
+                                {{ $errors->first('start_date') }}*
+                            </span>
+                        @endif
+            </div>             
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label>End Date:</label>
+                {{Form::date('end_date', '', ['class' => 'form-control', ($errors->has('address_line_2')) ? 'autofocus' : ''])}}
+                @if ($errors->has('end_date'))
+                            <span class="help-block" style="color:red">
+                                {{ $errors->first('end_date') }}*
                             </span>
                         @endif
             </div>             
         </div>
     </div>
+
+        
+
         {{Form::submit('Submit', ['class' =>'btn btn-primary'])}}
         {!! Form::close() !!} 
 </div>
