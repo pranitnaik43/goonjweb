@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ReliefCentre;
 use Storage;
+use App\Shipment;
+use App\ShipmentDetails;
+use App\checkpoints;
 
 class StorageController extends Controller
 {
@@ -92,7 +95,24 @@ class StorageController extends Controller
         return view('uploadExcel');
     }
 
+    public function track_list()
+    {
+        $shipment = ShipmentDetails::all()->where('shipment_status', 0);
+        $checkpoint = checkpoints::all();
+        return view('storage.track_list')->with('shipment',$shipment)->with('checkpoint',$checkpoint);
+    }
 
+    public function track($s_order_id){
+        $shipment_id  = checkpoints::all()->where('s_order_id',$s_order_id);
+        $shipment = ShipmentDetails::all()->where('s_order_id',$s_order_id); 
+        $checkpoint = checkpoints::all();
+        // return($checkpoint);
+        // $from =  checkpoints::all()->where('latitude',$shipment->start_location_latitude)->where('longitude',$shipment->start_location_longitude);
+        // $to =  checkpoints::all()->where('latitude',$shipment->end_location_latitude)->where('longitude',$shipment->end_location_longitude); 
+        $from = 'Kalyan';
+        $to = 'Chembur';
+        return view('storage.track')->with('s_order_id',$s_order_id)->with('shipment',$shipment)->with('checkpoint',$checkpoint)->with('from',$from)->with('to',$to);
+    }
 
 
 

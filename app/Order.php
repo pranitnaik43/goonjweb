@@ -10,5 +10,5 @@ class Order extends Model
     protected $table = 'order';
 
     //primary key
-    public $primaryKey = 'order_id';
+    public $primaryKey = 's_order_id';
 }

@@ -1,38 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Goonj</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
+@extends('layouts.app')
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/dashboard">Dashboard</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/admin/home">Home</a></li>
-      <li><a href="/admin/disaster">Disasters</a></li>
-      <li><a href="/admin/approve">Approve Unverified Users</a></li>
-      <li><a href="/admin/ReliefCentre">Set Up Relief Centre</a></li>
-      <li><a href="/admin/onsiteTeam">Create Onsite Team</a></li>
-      <li><a href="/admin/onsite">View Onsite Orders</a></li>
-      <li><a href="/admin/storagecentre">Storage Centres</a></li>
-    </ul>
-  </div>
-</nav>
-  
-
-<body>
-  <div class="well well-lg">
-      <h1 style= "color: SteelBlue"><u>Storage Centres</u></h1>
-     <label for="usr" style= "color: SteelBlue" input align="right">Storage Centres Count:</label>
-  <input type="text" class="" id="usr" input align="right" value="{{count($storage_centre)}}" readonly>
+@section('content')
+<div class="well well-lg">
+      <h1 style= "color: SteelGray">Storage Centres</h1>
+</div>      
+     {{-- <label for="usr" style= "color: SteelBlue" input align="right">Storage Centres Count:</label> --}}
+  {{-- <input type="text" class="" id="usr" input align="right" value="{{count($storage_centre)}}" readonly> --}}
 
   <table class="table table-striped table-bordered table-hover table-condensed">
       <thead style= "color: SteelBlue">
@@ -69,7 +42,8 @@
               <td><h6>{{$s_centre->state}}</h6></td>
               <td><h6>{{$s_centre->country}}</h6></td>
               <td><h6>{{$s_centre->postal_code}}</h6></td>
-              <td><h6><a href="/admin/storagecentre/{{$s_centre->storage_centre_id}}"><button type="button">View</a></h6></td>
+              {{-- <td><h6><a href="/admin/storagecentre/{{$s_centre->storage_centre_id}}"><button type="button">View</a></h6></td> --}}
+                <td><a href="/admin/storagecentre/{{$s_centre->storage_centre_id}}" class="button">View<a></td>
               </tr>
           </tbody>
   @endforeach
@@ -78,21 +52,12 @@
   @else
   <p>No Storage Centres</p>
   @endif
-  <h4><a href="/admin/storagecentre/add"><button type="button">Add new Storage Centres</a></h4>
-      
-      </div>
+  {{-- <h4><a href="/admin/storagecentre/add"><button type="button">Add new Storage Centres</a></h4> --}}
+    <h4><a href="/admin/storagecentre/add" class="button">Add new Storage Centres<a></h4>
   </body>
 
 
 </body>
 </html>
 
-
-<script>
-        $(".nav li").on("click", function() {
-          $(".nav li").removeClass("active");
-          $(this).addClass("active");
-        });
-    
-    </script>
-    
+@endsection

@@ -146,8 +146,30 @@ class AdminOfficeController extends Controller
         $contents = Storage::disk('quotation')->get($quotation->quotation_details);
         $data = json_decode($contents,true); 
         $objects = $data[0]['material'];
-        // return $id_data['id'];
-        return view('admin.viewQuotation')->with('data',$objects)->with('quotation',$quotation);
+        // return $objects;
+
+        $jquery_material = array();
+        $jquery_quantity = array();
+        $jquery_measure = array();
+
+        for($i = 0; $i < count($objects); $i++)
+        {
+            $jquery_material[$i] = $objects[$i]['name'];
+            $jquery_quantity[$i] = $objects[$i]['quantity'];
+            $jquery_measure[$i] = $objects[$i]['measure'];
+        }
+        
+        $display=array(0);
+
+        for($i = 0; $i < count($objects); $i++)
+        {
+            $display[$i] = array($objects[$i]['name'] , $objects[$i]['quantity'] , $objects[$i]['measure']);
+        }
+
+        // return $display;
+        return view('admin.viewQuotation')->with('display',$display)->with('quotation',$quotation);
+
+        // return view('admin.viewQuotation')->with('data',$objects)->with('quotation',$quotation);
     }
 
     public function approveQuotation(){
@@ -351,6 +373,10 @@ class AdminOfficeController extends Controller
         $disaster->save();
         return redirect('/admin/disaster')->with('success', 'Disaster Uploaded');
 
+    }
+    public function pinLocation()
+    {
+        return view('admin.pinlocation');
     }
 
 }

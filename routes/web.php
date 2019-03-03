@@ -15,7 +15,9 @@
 //     return view('welcome');
 // });
 Route::get('/', function () {
-    return view('auth.login');
+    // return view('auth.login');
+    return view('layouts.home');
+
 });
 
 Auth::routes();
@@ -161,7 +163,11 @@ Route::post('/Authenticate','MobileAuthenticationController@Authenticate');
 
 //===========================</Aneesh-Android>================================
 
+//==========================Storage_track================================
 
+Route::get('/storage_center/track_list', 'StorageController@track_list');
+Route::get('/storage_center/track/{s_order_id}', 'StorageController@track');
 
-
-
+//==========================Storage_track================================
+Route::get('/admin/pinlocation', 'AdminOfficeController@pinLocation');
+// Route::get('viewQuotation/1','AdminOfficeController@viewQuotation');

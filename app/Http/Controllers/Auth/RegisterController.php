@@ -59,8 +59,8 @@ class RegisterController extends Controller
             'country'=>'required',
             'state'=>'required',
             'city'=>'required',
-            'address_line_3'=>'required',
-            'address_line_2'=>'required',
+            'address_line_3'=>'nullable',
+            'address_line_2'=>'nullable',
             'address_line_1'=>'required',
             'alternative_contact_no'=>'nullable|numeric|digits:10|unique:awaited_user,alternative_contact_no',
             'contact_no'=>'required|numeric|digits:10|unique:awaited_user,contact_no',
@@ -103,6 +103,7 @@ class RegisterController extends Controller
             'country' => $data['country'],
             'postal_code' => $data['postal_code'],
             'type_of_role' => $data['type_of_role'],
+            'status' => 0,
         ]);
         // return User::create([
         //     'name' => $data['name'],

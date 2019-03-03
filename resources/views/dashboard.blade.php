@@ -5,16 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
                 <div class="card-body">
+                        <div class="bgimg" >
+                                <img src="{{asset('img/goonj_bg.jpg')}}" style="max-width:100%; max-height: 200%;object-fit: cover">
+                            </div>
+                        
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
                 </div>
             </div>
         </div>

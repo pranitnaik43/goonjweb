@@ -21,3 +21,5 @@ Route::get('/post','FileController@StoreJson');
 Route::post('/post','FileController@StoreJson');
 Route::get('/Authenticate','MobileAuthenticationController@Authenticate');
 Route::post('/Authenticate','MobileAuthenticationController@Authenticate');
+Route::post('/VerifyCode','VerifyCodeController@AuthenticateCode');
+Route::get('/VerifyCode','VerifyCodeController@AuthenticateCode');

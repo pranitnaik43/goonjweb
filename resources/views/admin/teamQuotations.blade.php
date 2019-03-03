@@ -8,20 +8,21 @@
         <tr>
             <th>Team</th>
             <th>Operation</th>
+            <th>Details</th>
         </tr>
         </thead>
         <tbody id="myTable">
         @foreach($quotations as $quotation) 
         <tr>
             <td>{{$quotation['team_id']}}</td>
-            <td><a href="/viewQuotation/{{$quotation['quotation_id']}}" class="btn btn-primary">View<a></td>
+            <td><a href="/viewQuotation/{{$quotation['quotation_id']}}" class="button">View<a></td>
         </tr>
         @endforeach
         </tbody>
     </table>
     </div>
     <div class="d-flex justify-content-center">         
-        <button class = 'btn btn-primary'>Submit</button>
+        <button class = 'button'>Submit</button>
     </div>
     {{ Form::close() }}
 
