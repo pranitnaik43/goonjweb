@@ -9,6 +9,7 @@
             <th>Material</th>
             <th>Quantity</th>
             <th>Measure</th>
+            <th>Received Type</th>
         </tr>
         </thead>
         <tbody id="myTable">
@@ -17,6 +18,13 @@
             <td>{{$mat['name']}}</td>
             <td>{{$mat['quantity']}}</td>
             <td>{{$mat['measure']}}</td>
+            @if($mat['receivedType']==0)
+            <td>Donated</td>
+            @elseif($mat['receivedType']==1)
+            <td>Purchased</td>
+            @elseif($mat['receivedType']==2)
+            <td>Received from another Storage centre</td>
+            @endif
         </tr>
         @endforeach
         </tbody>

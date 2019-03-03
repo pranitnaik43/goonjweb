@@ -44,7 +44,7 @@ class StorageController extends Controller
         // return $objects;
         $count = count($objects);       
         $last_index = $count-1;
-        $object = ['id'=>$objects[$last_index]['id']+1, 'name'=>$request->name, 'quantity'=>$request->quantity, 'measure'=>$request->measure];          //last object         
+        $object = ['id'=>$objects[$last_index]['id']+1, 'name'=>$request->name, 'quantity'=>$request->quantity, 'measure'=>$request->measure, 'receivedType'=>$request->receivedType];        //last object         
         $data[0]['material'][$count]=$object;        //append last object to the array
         $json=json_encode($data,true);       //convert array to json
         Storage::disk('reliefCentre')->put('centre1.json', $json);      //store json(write original file)
@@ -81,6 +81,7 @@ class StorageController extends Controller
         $id_data['name']=$request->name;
         $id_data['quantity']=$request->quantity;
         $id_data['measure']=$request->measure;
+        $id_data['receivedType']=$request->receivedType;
         $objects[$i]=$id_data;
         $data[0]['material']=$objects;
 

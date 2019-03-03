@@ -171,3 +171,5 @@ Route::get('/storage_center/track/{s_order_id}', 'StorageController@track');
 //==========================Storage_track================================
 Route::get('/admin/pinlocation', 'AdminOfficeController@pinLocation');
 // Route::get('viewQuotation/1','AdminOfficeController@viewQuotation');
+
+Route::get('/distance', 'AutomationController@distance');

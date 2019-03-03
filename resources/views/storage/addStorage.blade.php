@@ -19,6 +19,7 @@
             <th>Material</th>
             <th>Quantity</th>
             <th>Measure</th>
+            <th>Received Type</th>
         </tr>
         </thead>
         <tbody  id="myTable">
@@ -47,6 +48,14 @@
                     </span>
                 @endif
                 </td>
+                <td>
+                {{Form::select('receivedType', array('0' => 'Donated', '1' => 'Purchased', '2'=>'Received from another Storage centre'), '', ['class'=> 'form-control','placeholder'=>''])}}
+                @if ($errors->has('receivedType'))
+                    <span class="help-block" style="color:red">
+                        {{ $errors->first('receivedType') }}*
+                    </span>
+                @endif
+                </td>
                 <td><button class = 'btn btn-primary'>Add</button></td>
                     {{-- {{Form::submit('Submit', ['class' =>'btn btn-primary'])}} --}}
                 {{-- <button class="btn btn-primary" style="margin-left:50px">Add</button> --}}
@@ -57,6 +66,13 @@
             <td>{{$mat['name']}}</td>
             <td>{{$mat['quantity']}}</td>
             <td>{{$mat['measure']}}</td>
+            @if($mat['receivedType']==0)
+            <td>Donated</td>
+            @elseif($mat['receivedType']==1)
+            <td>Purchased</td>
+            @elseif($mat['receivedType']==2)
+            <td>Received from another Storage centre</td>
+            @endif
             <td><a href="/editStorage/{{$mat['id']}}" class = 'btn btn-primary'>Edit</a></td>
         </tr>
         @endforeach

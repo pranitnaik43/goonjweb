@@ -15,6 +15,7 @@
             <th>Material</th>
             <th>Quantity</th>
             <th>Measure</th>
+            <th>Received Type</th>
         </tr>
         </thead>
         <tbody  id="myTable">
@@ -46,6 +47,15 @@
                     </span>
                 @endif
                 </td>
+                <td>
+                    {{Form::select('receivedType', array('0' => 'Donated', '1' => 'Purchased', '2'=>'Received from another Storage centre'), $mat['receivedType'], ['class'=> 'form-control'])}}
+                    @if ($errors->has('receivedType'))
+                        <span class="help-block" style="color:red">
+                            {{ $errors->first('receivedType') }}*
+                        </span>
+                    @endif
+                </td>
+
                 <td><button class = 'btn btn-primary'>Submit</button></td>
             </tr>
             @else
@@ -53,6 +63,7 @@
                     <td>{{$mat['name']}}</td>
                     <td>{{$mat['quantity']}}</td>
                     <td>{{$mat['measure']}}</td>
+                    <td>{{$mat['receivedType']}}</td>
                     {{-- <td><button id="{{$mat['id']}}" class = 'btn btn-primary' action="edit/{{$mat['id']}}">Edit</button></td> --}}
                 </tr>
             @endif
